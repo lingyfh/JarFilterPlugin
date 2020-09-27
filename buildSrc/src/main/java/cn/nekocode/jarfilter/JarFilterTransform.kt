@@ -93,9 +93,15 @@ class JarFilterTransform(private val project: Project) : Transform() {
 
         val filter = jarFilters.firstOrNull {
             val pattern = it.first
-            pattern.matcher(jarInput.name).matches()
+            println("pattern = " + pattern)
+            println("jar input = " + jarInput)
+            if (jarInput.file.absolutePath.contains(it.first.toString())) {
+                true
+            } else {
+                pattern.matcher(jarInput.name).matches()
+            }
         }?.second
-
+        println("filter = " + filter)
         Utils.copyAndFilterJar(jarInput.file, outJarFile, filter)
     }
 }

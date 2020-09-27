@@ -19,6 +19,11 @@ package cn.nekocode.jarfilter.example;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.bun.miitmdid.core.MdidSdkHelper;
+import com.bun.miitmdid.interfaces.IIdentifierListener;
+import com.bun.miitmdid.interfaces.IdSupplier;
+import com.netease.nis.sdkwrapper.Utils;
+
 /**
  * @author nekocode
  */
@@ -28,5 +33,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MdidSdkHelper.InitSdk(this, true, new IIdentifierListener() {
+            @Override
+            public void OnSupport(boolean b, IdSupplier idSupplier) {
+
+            }
+        });
+
+        Utils.showRiskMessage(this, "hahhhahhh");
     }
 }

@@ -72,7 +72,8 @@ object Utils {
             FileUtils.copyFile(inJarFile, outJarFile)
             return
         }
-
+        println("in  jar file = " + inJarFile)
+        println("out jar file = " + outJarFile)
         ZipInputStream(FileInputStream(inJarFile)).use { zis ->
             ZipOutputStream(FileOutputStream(outJarFile)).use { zos ->
                 var i: ZipEntry?
